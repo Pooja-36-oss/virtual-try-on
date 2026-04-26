@@ -6,9 +6,9 @@ WORKDIR /app
 
 # Install system dependencies for OpenCV and other image libs
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean
 
 # Copy the requirements file into the container
 COPY requirements.txt .
