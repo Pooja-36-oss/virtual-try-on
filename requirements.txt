@@ -1,0 +1,11 @@
+python-dotenv
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+python-multipart
+requests
+gradio-client
+Pillow
+opencv-python-headless
+gunicorn

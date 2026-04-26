@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Virtual Try-On Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Virtual Try-On <span>Studio</span></h1>
+            <p>Experience ultra-realistic AI fashion fitting instantly.</p>
+        </header>
+
+        <main>
+            <form id="tryon-form">
+                <!-- Top Row: Category Selection -->
+                <div class="category-section">
+                    <label for="category">Select Garment Category</label>
+                    <div class="custom-select">
+                        <select id="category" name="category" required>
+                            <option value="kurti" selected>Kurti (Indian Ethnic)</option>
+                            <option value="lehenga">Lehenga or Kurti Set(Indian Traditional)</option>
+                            <option value="shirt">Shirt / Top</option>
+                            <option value="pant">Pant / Bottom</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Middle Row: Side-by-Side Uploads -->
+                <div class="upload-row">
+                    <!-- User Image Upload -->
+                    <div class="upload-card" id="user-upload-card">
+                        <div class="card-header">
+                            <h3>1. Your Photo</h3>
+                            <span class="badge">Frontal</span>
+                        </div>
+                        <div class="image-preview" id="user-preview"
+                            onclick="document.getElementById('user_image').click()">
+                            <span class="placeholder-text">+ Upload Person</span>
+                        </div>
+                        <input type="file" id="user_image" name="user_image" accept="image/*" required
+                            onchange="previewImage(this, 'user-preview')">
+                    </div>
+
+                    <!-- Garment Image Upload -->
+                    <div class="upload-card" id="garment-upload-card">
+                        <div class="card-header">
+                            <h3>2. Garment</h3>
+                            <span class="badge">Catalog</span>
+                        </div>
+                        <div class="image-preview" id="garment-preview"
+                            onclick="document.getElementById('garment_image').click()">
+                            <span class="placeholder-text">+ Upload Garment</span>
+                        </div>
+                        <input type="file" id="garment_image" name="garment_image" accept="image/*" required
+                            onchange="previewImage(this, 'garment-preview')">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="generate-btn" id="generate-btn">
+                    <span class="btn-text">Generate Try-On</span>
+                    <div class="loader-spinner" id="spinner" style="display: none;"></div>
+                </button>
+            </form>
+
+            <!-- Bottom Row: Result -->
+            <div class="result-section" id="result-section">
+                <h2>Try-On Result</h2>
+                <div class="result-container" id="result-container">
+                    <img id="result-image" src="" alt="Try-On Result" style="display: none;">
+                    <div id="waiting-text" class="waiting-text">Results will appear here</div>
+                </div>
+                <!-- Save Button moved outside for visibility -->
+                <button id="download-btn" class="download-btn" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Save Result</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

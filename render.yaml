@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: viton-backend
+    env: docker
+    plan: free
+    region: ohio
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: HF_TOKEN
+        sync: false # Set this in the Render dashboard manually
+      - key: VTON_SPACE_ID
+        value: yisol/IDM-VTON
+      - key: API_TIMEOUT
+        value: 120
+      - key: PORT
+        value: 8000
